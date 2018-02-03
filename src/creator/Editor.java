@@ -33,7 +33,7 @@ public class Editor extends JPanel {
     				g.drawLine(i, 0, i, xDim);
     				g.drawLine(0, i, xDim, i);
     			}
-    		} 		
+    		}
     	}
     	public void fillGrid(BufferedImage[][] map) {
     		tiles = map;
