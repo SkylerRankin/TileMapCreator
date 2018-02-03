@@ -1,4 +1,5 @@
-import java.awt.Color;
+package creator;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -23,18 +24,17 @@ public class Editor extends JPanel {
     			for (int gX = 0; gX < xDim/gridSpacing; gX ++) {
     				if (tiles[gY][gX] != null)
     				g.drawImage(tiles[gY][gX], (gX*gridSpacing), (gY*gridSpacing), null);
-    				g.fillRect((gX*gridSpacing), (gY*gridSpacing), gridSpacing, gridSpacing);
-    					}
-    				}
+    			}
+    		}
     		if ( xDim == yDim ){
     			for (int i = 0; i < xDim; i+=gridSpacing) {
     				g.drawLine(i, 0, i, xDim);
     				g.drawLine(0, i, xDim, i);
-    				System.out.println("painting");
     			}
     		} 		
     	}
     	public void fillGrid(BufferedImage[][] map) {
     		tiles = map;
+    		repaint();
     	}
 }
