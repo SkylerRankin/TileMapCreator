@@ -8,15 +8,25 @@ import javax.swing.JPanel;
 
 public class Editor extends JPanel {
     
-	private int gridSpacing = 50;
+	private int gridSpacing;
 	private BufferedImage[][] tiles;
-	private int xDim = 500;
-	private	int yDim = 500;
+	private int xDim;
+	private	int yDim;
+	private int offX;
+	private int offY;
 	
-    public Editor() {
+    public Editor(int _s, int w, int h) {
+        gridSpacing = _s;
+        xDim = w*_s;
+        yDim = h*_s;
         this.setPreferredSize(new Dimension(xDim, yDim));
         repaint();
         tiles = new BufferedImage [(xDim/gridSpacing)] [(yDim/gridSpacing)];
+    }
+    
+    public void setOffset(int x, int y) {
+        offX += x;
+        offY += y;
     }
     
     public void paintComponent (Graphics g) {
@@ -35,6 +45,7 @@ public class Editor extends JPanel {
     			}
     		}
     	}
+    
     	public void fillGrid(BufferedImage[][] map) {
     		tiles = map;
     		repaint();

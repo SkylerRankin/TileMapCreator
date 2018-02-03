@@ -7,14 +7,16 @@ import javax.swing.JPanel;
 
 import creator.Control.ButtonListener;
 import creator.Control.ClickListener;
+import creator.Control.KeyPressListener;
 
 public class View extends JFrame {
     
     JPanel container = new JPanel();
-    Editor e = new Editor();
+    Editor e;
     CurrentPanel p = new CurrentPanel();
     
-    public View() {
+    public View(int size, int w, int h) {
+        e = new Editor(size, w, h);
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
         container.add(e);
         container.add(p);
@@ -24,8 +26,11 @@ public class View extends JFrame {
         e.repaint();
     }
     
-    public void addListeners(ButtonListener bl, ClickListener cl) {
+    public void addListeners(ButtonListener bl, ClickListener cl, KeyPressListener kl) {
+        p.addKeyListener(kl);
         p.addListeners(bl);
+        p.setFocusable(true);
+        p.requestFocus();
         e.addMouseListener(cl);
     }
     
@@ -39,6 +44,14 @@ public class View extends JFrame {
     
     public void updateCurrentTile(BufferedImage a) {
     		p.updateCurrentImage(a);
+    }
+    
+    public void setFocus() {
+        p.requestFocus();
+    }
+    
+    public void setOffset(int x, int y) {
+        e.setOffset(x, y);
     }
 
 }

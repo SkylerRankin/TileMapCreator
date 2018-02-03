@@ -1,11 +1,14 @@
 package creator;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+
 
 public class Control {
     
@@ -15,12 +18,33 @@ public class Control {
     public Control(Model m, View v) {
         this.m = m;
         this.v = v;
-        v.addListeners(new ButtonListener(), new ClickListener());
+        v.addListeners(new ButtonListener(), new ClickListener(), new KeyPressListener());
         v.setVisible(true);
     }
     
     public static void main(String[] args) {
-        Control c = new Control(new Model(), new View());
+        Control c = new Control(new Model(32, 10, 10), new View(32, 10, 10));
+    }
+    
+    class KeyPressListener implements KeyListener {
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            System.out.println(e.getKeyCode());
+            if (e.getKeyCode() == 49) {
+                m.changeTile(-1);
+                v.updateCurrentTile(m.getCurrentImage());
+            } else if (e.getKeyCode() == 50) {
+                m.changeTile(1);
+                v.updateCurrentTile(m.getCurrentImage());
+            }
+            v.setFocus();
+        }
+        @Override
+        public void keyReleased(KeyEvent e) {}
+        @Override
+        public void keyTyped(KeyEvent e) {}
+        
     }
     
     class ClickListener implements MouseListener {
@@ -30,6 +54,7 @@ public class Control {
             m.handleClick(me.getX(), me.getY());
             v.updateMapImages(m.getTiles());
             v.updateCurrentTile(m.getCurrentImage());
+            v.setFocus();
         }
 
         @Override
@@ -70,6 +95,7 @@ public class Control {
                 }
                 break;
             }
+            v.setFocus();
         }
         
     }

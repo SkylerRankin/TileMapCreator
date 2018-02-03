@@ -4,22 +4,27 @@ import java.awt.image.BufferedImage;
 
 public class Model {
     
-    private String[][] map_text = new String[10][10];
-    private BufferedImage[][] map_image = new BufferedImage[10][10];
+    private String[][] map_text;
+    private BufferedImage[][] map_image;
     
     private int currentTile = 0;
     
-    private int height = 500;
-    private int width = 500;
+    private int height;
+    private int width;
     
-    private int size = 50;
+    private int size;
     
     private BufferedImage[] tiles = null;
     
     private String tile_path = null;
     private String save_path = null;
     
-    public Model() {
+    public Model(int _size, int _w, int _h) {
+        size = _size;
+        height = _h;
+        width = _w;
+        map_text = new String[height][width];
+        map_image = new BufferedImage[height][width];
         for (int i=0; i<map_image.length; ++i)
             for (int j=0; j<map_image[0].length; ++j)
                 map_image[i][j] = null;
@@ -43,12 +48,19 @@ public class Model {
     public void setTilePath(String p) {
         tile_path = p;
         SpriteSheetManager sm = new SpriteSheetManager();
-        tiles = sm.getSprites(50, 50, tile_path);
+        tiles = sm.getSprites(size, size, tile_path);
         System.out.println(tiles.length);
     }
     
     public void setSavePath(String p) {
         save_path = p;
+    }
+    
+    public void changeTile(int i) {
+        if (i == -1 && currentTile > 0)
+            currentTile--;
+        else if (i == 1 && currentTile < tiles.length - 1)
+            currentTile++;
     }
 
 }
