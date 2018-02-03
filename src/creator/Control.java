@@ -23,20 +23,39 @@ public class Control {
     }
     
     public static void main(String[] args) {
-        Control c = new Control(new Model(32, 10, 10), new View(32, 10, 10));
+        int scale = 4;
+        Control c = new Control(new Model(16, 200, 200, scale), new View(16, 100, 100, scale));
     }
     
     class KeyPressListener implements KeyListener {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println(e.getKeyCode());
-            if (e.getKeyCode() == 49) {
+            switch (e.getKeyCode()) {
+            case 37:
+                m.setOffset(10, 0);
+                v.setOffset(10, 0);
+                break;
+            case 38:
+                m.setOffset(0, 10);
+                v.setOffset(0, 10);
+                break;
+            case 39:
+                m.setOffset(-10, 0);
+                v.setOffset(-10, 0);
+                break;
+            case 40:
+                m.setOffset(0, -10);
+                v.setOffset(0, -10);
+                break;
+            case 49:
                 m.changeTile(-1);
                 v.updateCurrentTile(m.getCurrentImage());
-            } else if (e.getKeyCode() == 50) {
+                break;
+            case 50:
                 m.changeTile(1);
                 v.updateCurrentTile(m.getCurrentImage());
+                break;
             }
             v.setFocus();
         }
@@ -87,12 +106,14 @@ public class Control {
                 break;
             case "destination":
                 c = new JFileChooser();
-                c.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 if (c.showOpenDialog(v) == 0) {
                     path = c.getSelectedFile().getPath().toString();
                     m.setSavePath(path);
                     v.updateLabel(cmd, path);
                 }
+                break;
+            case "compile":
+                m.compile();
                 break;
             }
             v.setFocus();

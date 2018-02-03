@@ -15,8 +15,8 @@ public class View extends JFrame {
     Editor e;
     CurrentPanel p = new CurrentPanel();
     
-    public View(int size, int w, int h) {
-        e = new Editor(size, w, h);
+    public View(int size, int w, int h, int s) {
+        e = new Editor(size, w, h, s);
         container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
         container.add(e);
         container.add(p);

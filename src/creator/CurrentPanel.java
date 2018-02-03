@@ -2,6 +2,7 @@ package creator;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
@@ -26,6 +27,7 @@ public class CurrentPanel extends JPanel {
         
         select_tiles.setActionCommand("tiles");
         select_destination.setActionCommand("destination");
+        compile.setActionCommand("compile");
         
         this.setBackground(Color.lightGray);
         add(new JLabel("Tile Map Creator"));
@@ -34,6 +36,7 @@ public class CurrentPanel extends JPanel {
         add(select_destination);
         add(save_location);
         add(new JLabel("Current Tile"));
+        add(compile);
         repaint();
     }
     
@@ -52,13 +55,18 @@ public class CurrentPanel extends JPanel {
     
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        //Graphics2D g2d = (Graphics2D) g;
+        //g2d.scale(10, 10);
         if (img != null)
-            g.drawImage(img, 50, 200, null);
+            //g2d.drawImage(img, 50, 200, null);
+            g.drawImage(img, 50, 200, 10, 10, null);
+        //g2d.scale(1, 1);
     }
     
     public void addListeners(ButtonListener bl) {
         select_tiles.addActionListener(bl);
         select_destination.addActionListener(bl);
+        compile.addActionListener(bl);
     }
     
     public void updateCurrentImage(BufferedImage a) {
