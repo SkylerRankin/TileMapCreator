@@ -53,12 +53,17 @@ public class CurrentPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (img != null)
-            g.drawImage(img, 0, 0, null);
+            g.drawImage(img, 50, 200, null);
     }
     
     public void addListeners(ButtonListener bl) {
         select_tiles.addActionListener(bl);
         select_destination.addActionListener(bl);
+    }
+    
+    public void updateCurrentImage(BufferedImage a) {
+    		img = a;
+    		repaint();
     }
 
 }

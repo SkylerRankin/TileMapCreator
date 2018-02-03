@@ -36,5 +36,9 @@ public class View extends JFrame {
     public void updateMapImages(BufferedImage[][] a) {
         e.fillGrid(a);
     }
+    
+    public void updateCurrentTile(BufferedImage a) {
+    		p.updateCurrentImage(a);
+    }
 
 }

@@ -25,6 +25,10 @@ public class Model {
                 map_image[i][j] = null;
     }
     
+    public BufferedImage getCurrentImage() {
+    		return tiles[currentTile];
+    }
+    
     public BufferedImage[][] getTiles() {
         return map_image;
     }
