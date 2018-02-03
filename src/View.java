@@ -15,6 +15,7 @@ public class View extends JFrame {
         add(container);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        e.repaint();
     }
 
 }

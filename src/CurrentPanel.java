@@ -19,6 +19,8 @@ public class CurrentPanel extends JPanel {
     }
     
     public void paintComponent(Graphics g) {
+    		super.paintComponent(g);
+    		
         if (img != null)
             g.drawImage(img, 0, 0, null);
     }
