@@ -1,4 +1,6 @@
 package creator;
+import java.awt.image.BufferedImage;
+
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +31,10 @@ public class View extends JFrame {
     
     public void updateLabel(String cmd, String text) {
         p.updateLabel(cmd, text);
+    }
+    
+    public void updateMapImages(BufferedImage[][] a) {
+        e.fillGrid(a);
     }
 
 }

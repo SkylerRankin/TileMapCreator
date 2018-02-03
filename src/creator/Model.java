@@ -38,10 +38,9 @@ public class Model {
     
     public void setTilePath(String p) {
         tile_path = p;
-        if (tiles == null && tile_path != null) {
-            SpriteSheetManager sm = new SpriteSheetManager();
-            tiles = sm.getSprites(50, 50, tile_path);
-        }
+        SpriteSheetManager sm = new SpriteSheetManager();
+        tiles = sm.getSprites(50, 50, tile_path);
+        System.out.println(tiles.length);
     }
     
     public void setSavePath(String p) {

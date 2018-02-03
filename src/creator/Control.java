@@ -28,6 +28,7 @@ public class Control {
         @Override
         public void mouseClicked(MouseEvent me) {
             m.handleClick(me.getX(), me.getY());
+            v.updateMapImages(m.getTiles());
         }
 
         @Override
