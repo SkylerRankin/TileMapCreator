@@ -1,6 +1,10 @@
+package creator;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import creator.Control.ButtonListener;
+import creator.Control.ClickListener;
 
 public class View extends JFrame {
     
@@ -15,6 +19,15 @@ public class View extends JFrame {
         add(container);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    public void addListeners(ButtonListener bl, ClickListener cl) {
+        p.addListeners(bl);
+        e.addMouseListener(cl);
+    }
+    
+    public void updateLabel(String cmd, String text) {
+        p.updateLabel(cmd, text);
     }
 
 }
