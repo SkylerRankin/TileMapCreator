@@ -26,7 +26,6 @@ public class Editor extends JPanel {
     				if (tiles[gY][gX] != null)
     				g.drawImage(tiles[gY][gX], (gX*gridSpacing), (gY*gridSpacing), null);
     				
-    				}
     			}
     		
     		if (xDim == yDim) {
