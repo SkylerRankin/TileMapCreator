@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/Editor.java
 import java.awt.Color;
+=======
+package creator;
+>>>>>>> 7ff2a8b737fbb2e0867777040db60e2b5d089a6a:src/creator/Editor.java
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
